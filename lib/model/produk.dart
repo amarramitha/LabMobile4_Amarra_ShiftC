@@ -8,10 +8,11 @@ class Produk {
 
   factory Produk.fromJson(Map<String, dynamic> obj) {
     return Produk(
-      id: obj['id'],
+      id: obj['id'] is String ? int.tryParse(obj['id']) : obj['id'],
       kodeProduk: obj['kode_produk'],
       namaProduk: obj['nama_produk'],
-      hargaProduk: obj['harga_produk'],
+      hargaProduk:
+          obj['harga'] is String ? int.tryParse(obj['harga']) : obj['harga'],
     );
   }
 }
